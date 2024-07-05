@@ -9,12 +9,12 @@ import { AppDataSource as AppDb } from '../config/Db'
 import { Room } from '../model/Room'
 
 
-pathApi.get("/room", async (req: Request, resp: Response) => {
+pathApi.get("/", async (req: Request, resp: Response) => {
     const rooms = await AppDb.manager.find(Room)
     resp.send({ room: rooms })
 })
 
-pathApi.post("/room", async (req: Request, resp: Response) => {
+pathApi.post("/", async (req: Request, resp: Response) => {
 
     const roomRepo = AppDb.getRepository(Room)
     const {

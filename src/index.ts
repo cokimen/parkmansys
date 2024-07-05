@@ -26,6 +26,7 @@ AppDb.initialize().then(async () => {
 */
 
 import roomRest from './route/RoomRest'
+import userRest from './route/UserRest'
 
 
 
@@ -74,32 +75,16 @@ app.get("/login", (req: express.Request, res: express.Response) => {
 });
 
 
-// group route endpoint for data user service
+/* 
+ group route endpoint for data user service
+*/
 
-app.get("/api/v1/user", async (req: Request, resp: Response) => {
-  resp.send({
-    info: "list user"
-  })
-})
-
-
-app.post("/api/v1/user", async (req: Request, resp: Response) => {
-  resp.send({
-    info: "Create User"
-  })
-})
-
-
-app.patch("/api/v1/user", async (req: Request, resp: Response) => {
-  resp.send({
-    info: "Enable Disable User"
-  })
-})
+app.use('/api/v1/user', userRest)
 
 
 
 // group route endpoint for data room service
-app.use('/api/v1', roomRest)
+app.use('/api/v1/room', roomRest)
 
 
 
