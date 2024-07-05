@@ -16,9 +16,17 @@ const app: Express = express();
 const port = 3000;
 
 
-// AppDb.initialize().then(async () => {
+AppDb.initialize().then(async () => {
 
-// }).catch(error => console.log(error))
+}).catch(error => console.log(error))
+
+
+/* 
+ path
+*/
+
+import roomRest from './route/RoomRest'
+
 
 
 
@@ -91,33 +99,7 @@ app.patch("/api/v1/user", async (req: Request, resp: Response) => {
 
 
 // group route endpoint for data room service
-
-app.get("/api/v1/room", async (req: Request, resp: Response) => {
-  const rooms = await AppDb.manager.find(Room)
-  resp.send({ room: rooms })
-})
-
-app.post("/api/v1/room", async (req: Request, resp: Response) => {
-
-  const roomRepo = AppDb.getRepository(Room)
-
-
-
-  const { 
-    name,
-    capacityPerson,
-    reserveStatus } = req.body;
-  let room = new Room();
-
-  console.log(await req.body)
-
-  room.capacityPerson = capacityPerson
-  room.reserveStatus = reserveStatus
-  room.name = name
-
-  room = await roomRepo.save(room)
-  resp.send( room)
-})
+app.use('/api/v1', roomRest)
 
 
 
