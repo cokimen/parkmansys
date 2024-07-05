@@ -1,0 +1,26 @@
+--init node.js project
+npm init -y
+
+--install dependencies for typescript
+npm install --save-dependencies typescript
+npm install --save ts-node // for invoking ts script directly without compile'
+
+--create configuration for typescript project 
+npx tsc --init | tsc --init // if you install in global module 
+
+
+
+--install other dependencies
+npm install typeorm --save
+npm install reflect-metadata --save
+npm install @types/node --save-dev
+npm install mysql --save 
+npm install express --save
+npm install @types/body-parser
+npm install @types/jsonwebtoken 
+npx typeorm init --name MyProject --database mysql --module esm
+npm i -D  @types/express @types/node
+
+
+
+
