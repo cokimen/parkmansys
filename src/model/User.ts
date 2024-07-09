@@ -8,31 +8,31 @@ export class User extends AuditTrail{
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({ name: "first_name"} )
+    @Column({ name: "first_name", default: ""} )
     firstName: string
 
-    @Column({ name: "last_name"})
+    @Column({ name: "last_name", default: ""})
     lastName: string
 
     @Column({ nullable: false, unique: true})
-    email: number
+    email: string
 
-    @Column({ name: "is_active"})
+    @Column({ name: "is_active", default: true})
     isActive: boolean
 
-    @Column()
+    @Column({nullable: false})
     password: string
 
-    @Column()
+    @Column({nullable: true, default: "UNKNOWN"})
     division: string
 
-    @Column({ name: "birth_date"})
+    @Column({ name: "birth_date", nullable: true})
     birthDate: Date
 
-    @Column()
+    @Column({ nullable: true})
     sex: string
 
-    @Column()
+    @Column({nullable: true})
     age: number
 
     requestChanges: Array<RequestChange>
